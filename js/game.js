@@ -5,7 +5,12 @@ const URL =
 
 const loader = document.getElementById("loader");
 const container = document.getElementById("container");
+const questionText = document.getElementById("question-text");
+const answerList = document.querySelectorAll(".answer-text");
+
 let formattedData = null;
+let questionIndex = 0;
+let correctAnswer = null;
 
 const fetchData = async () => {
   const response = await fetch(URL);
@@ -15,8 +20,25 @@ const fetchData = async () => {
 };
 
 const start = () => {
+  showQuestion();
   loader.style.display = "none";
   container.style.display = "block";
 };
 
+const showQuestion = () => {
+  const { question, answers, correctAnswerIndex } =
+    formattedData[questionIndex];
+  questionText.innerText = question;
+  correctAnswer = correctAnswerIndex;
+
+  answerList.forEach((button, index) => {
+    button.innerText = answers[index];
+  });
+};
+
+const checkAnswer = () => {};
+
 window.addEventListener("load", fetchData);
+answerList.forEach((button, index) => {
+  button.addEventListener("click", checkAnswer);
+});
