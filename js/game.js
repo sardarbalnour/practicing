@@ -1,8 +1,9 @@
 import formatData from "./helper.js";
 
+const level = localStorage.getItem("level") || "easy";
+
 const CORRECT_BONUS = 10;
-const URL =
-  "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple";
+const URL = `https://opentdb.com/api.php?amount=10&difficulty=${level}&type=multiple`;
 
 const loader = document.getElementById("loader");
 const container = document.getElementById("container");
