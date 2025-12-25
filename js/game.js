@@ -97,3 +97,4 @@ answerList.forEach((button, index) => {
     checkAnswer(event, index);
   });
 });
+
